@@ -3,30 +3,50 @@ pipeline {
     
     tools {
         maven 'maven3.6'
-        jdk 'jdk17'
+        jdk 'jdk'
     }
+
+    // environment {
+    //     SCANNER_HOME = tool 'sonar-scanner'
+    // }
 
     stages {
         
+        stage('Checkout') {
+            steps {
+             git 'https://github.com/Anushaaaaaaaaaaaaaa/Boardgame.git'
+            }
+        }
+        
         stage('Compile') {
             steps {
-             sh 'mvn compile'
+            //    sh 'mvn package'
             }
         }
-        stage('test') {
+
+        stage('Test') {
             steps {
-                sh 'mvn test'
+            //    withSonarQubeEnv('sonar-server') {
+            //         sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Boardgame -  Dsonar.projectKey=Boardgame \
+            //               -Dsonar.java.binaries=target/classes '''
             }
         }
-        stage('Package') {
+
+        stage('Build') {
             steps {
-               sh 'mvn package'
+                // script {
+                //     withDockerRegistry(credentialsId: 'dockerhub-cred', toolName: 'docker') {
+                //         sh "docker build -t boardwebapp:latest ."
+                //         sh "docker tag boardwebapp:latest anushaanayak/boardwebapp:latest"
+                //     }
+                // }  
             }
         }
-        stage('Hello') {
+        stage('Deploy') {
             steps {
-                echo 'Hello World'
+               
             }
         }
+
     }
 }
