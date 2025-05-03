@@ -18,11 +18,11 @@ pipeline {
             }
         }
         
-        // stage('Compile') {
-        //     steps {
-        //        sh 'mvn package'
-        //     }
-        // }
+        stage('Compile') {
+            steps {
+               sh 'mvn package'
+            }
+        }
 
         // stage('Test') {
         //     steps {
