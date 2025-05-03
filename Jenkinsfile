@@ -3,7 +3,7 @@ pipeline {
     
     tools {
         maven 'maven3.6'
-        jdk 'jdk'
+        jdk 'jdk17'
     }
 
     // environment {
@@ -20,7 +20,7 @@ pipeline {
         
         stage('Compile') {
             steps {
-               sh 'mvn package'
+               sh 'mvn clean install'
             }
         }
 
