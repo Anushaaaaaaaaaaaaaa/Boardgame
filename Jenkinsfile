@@ -14,7 +14,7 @@ pipeline {
         
         stage('Checkout') {
             steps {
-             git 'https://github.com/Anushaaaaaaaaaaaaaa/Boardgame.git'
+             git branch: 'main', url: 'https://github.com/Anushaaaaaaaaaaaaaa/Boardgame.git'
             }
         }
         
