@@ -51,16 +51,16 @@ pipeline {
             }
         }
 
-        // stage('Docker Push Image') {
-        //     steps {
-        //         script {
-        //             withDockerRegistry(credentialsId: 'dockerhub-credentials', toolName: 'docker') {
-        //                 sh "docker push anushaanayak/boardwebapp:latest"
-        //             }
-        //         }
+        stage('Docker Push Image') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'dockerhub-credentials', toolName: 'docker') {
+                        sh "docker push anushaanayak/boardwebapp:latest"
+                    }
+                }
                 
-        //     }
-        // }
+            }
+        }
 
 
     }
