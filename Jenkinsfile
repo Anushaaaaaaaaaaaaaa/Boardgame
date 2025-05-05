@@ -9,9 +9,9 @@ pipeline {
         jdk 'jdk17'
     }
 
-    // environment {
-    //     SCANNER_HOME = tool 'sonar-scanner'
-    // }
+    environment {
+        SCANNER_HOME = tool 'sonar-scanner'
+    }
 
     stages {
         
@@ -27,13 +27,14 @@ pipeline {
             }
         }
 
-        // stage('Test') {
-        //     steps {
-        //        withSonarQubeEnv('sonar-server') {
-        //             sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Boardgame -  Dsonar.projectKey=Boardgame \
-        //                   -Dsonar.java.binaries=target/classes '''
-        //     }
-        // }
+        stage('Test') {
+            steps {
+               withSonarQubeEnv('sonar-server') {
+                sh 'mvn sonar:sonar' // or whatever your scanner command is
+                    // sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Boardgame -  Dsonar.projectKey=Boardgame \
+                    //       -Dsonar.java.binaries=target/classes '''
+            }
+        }
 
         // 
         
