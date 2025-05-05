@@ -1,10 +1,10 @@
 pipeline {
 
-    agent any
+    // agent any
 
-    // agent {
-    //     label 'slavenode1'
-    // } 
+    agent {
+        label 'slavenode1'
+    } 
     
     tools {
         maven 'maven3.6'
@@ -39,13 +39,29 @@ pipeline {
             }
         }
 
-        // 
-        
-        // stage('Deploy') {
+        // stage('Docker Build Image') {
         //     steps {
-               
+        //         script {
+        //             withDockerRegistry(credentialsId: 'dockerhub-credentials', toolName: 'docker') {
+        //                 sh "docker build -t boardwebapp:latest ."
+        //                 sh "docker tag boardwebapp:latest anushaanayak/boardwebapp:latest"
+        //             }
+        //         }
+
         //     }
         // }
+
+        // stage('Docker Push Image') {
+        //     steps {
+        //         script {
+        //             withDockerRegistry(credentialsId: 'dockerhub-credentials', toolName: 'docker') {
+        //                 sh "docker push anushaanayak/boardwebapp:latest"
+        //             }
+        //         }
+                
+        //     }
+        // }
+
 
     }
 }
