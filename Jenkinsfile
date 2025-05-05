@@ -30,9 +30,8 @@ pipeline {
         stage('Test') {
             steps {
                withSonarQubeEnv('sonar-server') {
-                sh 'mvn sonar:sonar' // or whatever your scanner command is
-                    // sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Boardgame -  Dsonar.projectKey=Boardgame \
-                    //       -Dsonar.java.binaries=target/classes '''
+                    sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Boardgame -Dsonar.projectKey=Boardgame \
+                          -Dsonar.java.binaries=target/classes '''
                 }
             }
         }
