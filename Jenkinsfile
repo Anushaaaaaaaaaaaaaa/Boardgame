@@ -1,8 +1,10 @@
 pipeline {
 
-    agent {
-        label 'slavenode1'
-    } 
+    agent any
+
+    // agent {
+    //     label 'slavenode1'
+    // } 
     
     tools {
         maven 'maven3.6'
