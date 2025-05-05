@@ -39,17 +39,17 @@ pipeline {
             }
         }
 
-        // stage('Docker Build Image') {
-        //     steps {
-        //         script {
-        //             withDockerRegistry(credentialsId: 'dockerhub-credentials', toolName: 'docker') {
-        //                 sh "docker build -t boardwebapp:latest ."
-        //                 sh "docker tag boardwebapp:latest anushaanayak/boardwebapp:latest"
-        //             }
-        //         }
+        stage('Docker Build Image') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'dockerhub-credentials', toolName: 'docker') {
+                        sh "docker build -t boardwebapp:latest ."
+                        sh "docker tag boardwebapp:latest anushaanayak/boardwebapp:latest"
+                    }
+                }
 
-        //     }
-        // }
+            }
+        }
 
         // stage('Docker Push Image') {
         //     steps {
